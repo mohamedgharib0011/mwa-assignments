@@ -1,4 +1,4 @@
-
+(function(){
 /**
 write isWeekend function that returns the string "weekend" or "weekday" without using if-statement
 **/
@@ -13,3 +13,4 @@ function isWeekend(){
 }
 
 console.log(isWeekend());
+})();

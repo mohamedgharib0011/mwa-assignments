@@ -1,3 +1,4 @@
+(function(){
 /***
 * create currable function that takes as arguments (in this order):
 *   - Category
@@ -17,3 +18,4 @@
 applyCoupon=cat=>discount=>item=>{ item.price=item.price - (discount*item.price); return item};
 
 console.log(applyCoupon("food")(0.1)(item));
+})();

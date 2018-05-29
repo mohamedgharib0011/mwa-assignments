@@ -1,0 +1,13 @@
+***********************************************************
+Q1: Explain why do we want sometimes to use setImmediate instead of using setTimeout.
+Sol: sometimes we needs to execute callback immediately after the last IO event. like closing connection with database after executing the needed queries.
+
+***********************************************************
+Q2: Explain the difference between process.nextTick and setImmediate.
+Sol: process.nextTick adds the callback to the nextTick queue where Node executes all it's callbacks immediately after the current operation completes.
+    On the other hand, setImmediate will schedule the callbacks to run at check phase.
+
+
+************************************************************
+Q3:Name 10 modules that node provides by default.
+Sol: Promise, Set, URL, Proxy, Object, Number, RegExp, GLOBAL, MAP, Reflect

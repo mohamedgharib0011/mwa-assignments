@@ -1,1 +1,0 @@
-to run the files just call the them from Node.js command prompt

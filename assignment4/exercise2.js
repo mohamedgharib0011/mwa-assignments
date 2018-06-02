@@ -16,14 +16,18 @@ const port = 5555;
 http.createServer((req, res) => {
     const childProcess = fork('reading-file-child-process.js');
     const path = url.parse(req.url,true).query.url;
+    if(path){
     childProcess.send(path);
-    res.setHeader('content-type', 'text/html');
     childProcess.on('message', (chunck) => {
         if (chunck === 'END') {
+            
             res.end();
-        } else
+            console.log('processing end file')
+        } else{
+            console.log('writing chunck..')
             res.write(chunck);
+        }
     });
-
+}
 }).listen(port, hostname, () => console.log(`Server running at http://${hostname}:${port}/`));
 

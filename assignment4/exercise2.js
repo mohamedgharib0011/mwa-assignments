@@ -14,17 +14,20 @@ const url = require('url');
 const hostname = '127.0.0.1';
 const port = 5555;
 http.createServer((req, res) => {
+
     const childProcess = fork('reading-file-child-process.js');
     const path = url.parse(req.url,true).query.url;
+    // this condition will help to skip the request of Favicon that we don't care about
     if(path){
     childProcess.send(path);
     childProcess.on('message', (chunck) => {
         if (chunck === 'END') {
-            
+            // end the resopnse when receiving 'END'
             res.end();
-            console.log('processing end file')
+            console.log('processing end file');
         } else{
-            console.log('writing chunck..')
+            // write the received chunck directly to the response
+            console.log('writing chunck..');
             res.write(chunck);
         }
     });

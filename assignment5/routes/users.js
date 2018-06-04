@@ -1,46 +1,39 @@
 var express = require('express');
-var fetch = require('node-fetch');
-var router = express.Router();
+var axios = require('axios');
+var router = express.Router({ caseSensitive: true, strict: true });
 const { Observable, from } = require('rxjs');
 const { map } = require('rxjs/operators');
 
-/* GET users listing. */
+/**
+ * I provided three solutions (Promise, Observables, and Async/Await)
+ */
 router.get('/', function (req, res, next) {
 
-  // solution using Promises
-  var usersPromise = fetch('http://jsonplaceholder.typicode.com/users/');
 
-  usersPromise.then(data => data.json())
-    .then(data => res.send(data));
+  // Solution#1 (Promise)
+  //axios.get('http://jsonplaceholder.typicode.com/users/').then(data => data.data).then(data => res.json(data));
 
-  // solution using Observables
+  // Solution#2 (Observables)
+  // from(axios.get('http://jsonplaceholder.typicode.com/users/'))
+  //   .pipe(map(x => x.data))
+  //   .subscribe((data) => { console.log(data); res.send(data) });
 
-  // from(usersPromise)
-  //   .subscribe((data) => {
-  //     console.log(data);
-  //     res.send(data.json());
-  //   })
-
-
-  // solution using Async/Await
-
+  // Solution#3 (Async/Await)
   // getData().then((x) => {
-  //   console.log(x.data.json());
-  //   res.send(x.data.json())
-  // }).catch(x => {
-  //   console.log(x.data.json());
-  //   res.send(x.data.json())
+  //   res.send(x.data)
   // });
 
 
 
 });
 
+/**
+ * asysc function to get the data
+ */
 async function getData() {
   console.log("start getting data");
   try {
-    var usersPromise = await fetch('http://jsonplaceholder.typicode.com/users/');
-    //console.log(usersPromise);
+    var usersPromise = await axios.get('http://jsonplaceholder.typicode.com/users/');
     return usersPromise;
   } catch (error) {
     console.log("error while fetching the data");

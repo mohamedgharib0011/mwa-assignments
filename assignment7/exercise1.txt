@@ -1,0 +1,3 @@
+Book => {isbn:123,name:"How To Program", auther:"MAIKE", tags:["Java","OOP"]}
+Student => {name:"Mohamed Gharib", email:"mgharib@mum.edu", registrationNumber:1234}
+BorrowedBook => {book:{name:"How To Program", returnDate:new Date("12 Aug, 2018"), student:{name:"Mohamed Gharib", email:"mgharib@mum.edu"}}}

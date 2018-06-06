@@ -1,0 +1,15 @@
+**************** collections *****************
+Book => {isbn:123,name:"How To Program", auther:"MAIKE", tags:["Java","OOP"], numOfCopies:4}
+Student => {name:"Mohamed Gharib", email:"mgharib@mum.edu", membership:1234}
+BorrowedBook => {book:"How To Program", returnDate:new Date("12 Aug, 2018"), student:{name:"Mohamed Gharib", email:"mgharib@mum.edu"}}
+
+**************** indexes *******************
+db.Book.createIndex({tags:'text'})
+db.Book.createIndex({auther:1})
+db.Book.createIndex({isbn:1})
+
+db.Student.createIndex({membership:1},{unique:true})
+db.Student.createIndex({email:1},{unique:true})
+
+
+db.BorrowedBook.createIndex({returnDate:1, student:1, book:1})

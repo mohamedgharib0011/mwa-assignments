@@ -55,7 +55,7 @@ app.get('/resturants/nearme', function (req, res, next) {
 
         const db = client.db('mydb');
 
-        db.collection('restaurants').find({location:{$near:[-91.9665342,41.017654]}}).project({_id:0}).limit(10).toArray(function (err, doc) {
+        db.collection('restaurants').find({location:{$near:[-91.9665342,41.017654]}}).project({_id:0}).limit(5).toArray(function (err, doc) {
             if (err) throw err;
 
             console.log(doc);

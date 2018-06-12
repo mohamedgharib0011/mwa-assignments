@@ -1,6 +1,6 @@
 # Solution for assignment 12
 
-## Installation Guidelines 
-1. create new project using angular cli.
-2. replace app folder here with the newly created one by angular cli (src/app).
-3. run ng serve from the root of the project.
+### Installation Guidelines 
+1. create new project using angular cli (ng new project-name).
+2. replace the newly created app folder (src/app) using angular cli with app folder here.
+3. run (ng serve) from the root of the project.
